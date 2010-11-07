@@ -1,0 +1,1075 @@
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:1)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:2)
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:1)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:2)
+DEPRECATION WARNING: ActionController::Base.session= is deprecated. Please configure it on your application with config.session_store :cookie_store, :key => '....'. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/session_store.rb:7)
+
+
+Started GET "/" for 127.0.0.1 at 2010-11-07 11:13:15 +1100
+  Processing by WelcomeController#index as HTML
+Redirected to http://localhost:3000/searches/new
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/new" for 127.0.0.1 at 2010-11-07 11:13:15 +1100
+  Processing by SearchesController#new as HTML
+DEPRECATION WARNING: Base#after_initialize has been deprecated, please use Base.after_initialize :method instead. (called from <class:Search> at /Users/leoliang/Rails/found/app/models/search.rb:6)
+Completed   in 46ms
+
+ActiveRecord::StatementInvalid (Could not find table 'searches'):
+  app/controllers/searches_controller.rb:3:in `new'
+  app/controllers/searches_controller.rb:3:in `new'
+
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.7ms)
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:1)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:2)
+DEPRECATION WARNING: ActionController::Base.session= is deprecated. Please configure it on your application with config.session_store :cookie_store, :key => '....'. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/session_store.rb:7)
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (12.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (11.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateUsers (20100124054035)
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100124054035')
+Migrating to CreateSuburbs (20100124060306)
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "suburbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "area" varchar(255), "state" varchar(255), "postcode" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100124060306')
+Migrating to AddUsersPasswordResetField (20100124073325)
+  [1m[36mSQL (0.6ms)[0m  [1mALTER TABLE "users" ADD "perishable_token" varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE INDEX "index_users_on_perishable_token" ON "users" ("perishable_token")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_perishable_token')[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100124073325')[0m
+Migrating to CreatePosts (20100124111816)
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "available_from" date, "expiry_date" date, "inspection_time" varchar(255), "negotiable" boolean, "postable_id" integer, "postable_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100124111816')[0m
+Migrating to CreateProperties (20100124112416)
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "number_of_bedrooms" integer, "number_of_carparks" integer, "number_of_bathrooms" integer, "price" float, "bond" float, "max_tenants" integer, "number_of_current_tenants" integer, "furnished" boolean, "purpose" varchar(255), "type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100124112416')[0m
+Migrating to CreateCarparks (20100124114337)
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "carparks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "price" float, "bond" float, "type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100124114337')[0m
+Migrating to CreateAddresses (20100124114554)
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "line1" varchar(255), "line2" varchar(255), "addressable_id" integer, "addressable_type" varchar(255), "suburb_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100124114554')[0m
+Migrating to AddNameToSuburb (20100124115827)
+  [1m[35mSQL (0.3ms)[0m  ALTER TABLE "suburbs" ADD "name" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100124115827')[0m
+Migrating to CreatePropertySearches (20100126044312)
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "property_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "keywords" varchar(255), "min_price" integer, "max_price" integer, "num_of_bedrooms" integer, "num_of_bathrooms" integer, "num_of_carparks" integer, "property_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100126044312')[0m
+Migrating to ChangeColumnForProperty (20100126073625)
+  [1m[35mSQL (46.4ms)[0m  CREATE TEMPORARY TABLE "altered_properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "number_of_bedrooms" integer, "number_of_carparks" integer, "number_of_bathrooms" integer, "price" float, "bond" float, "max_tenants" integer, "number_of_current_tenants" integer, "furnished" boolean, "purpose" varchar(255), "prop_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("properties")[0m
+  [1m[35mSQL (0.3ms)[0m  DROP TABLE "properties"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "number_of_bedrooms" integer, "number_of_carparks" integer, "number_of_bathrooms" integer, "price" float, "bond" float, "max_tenants" integer, "number_of_current_tenants" integer, "furnished" boolean, "purpose" varchar(255), "prop_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_properties")
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "altered_properties"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100126073625')
+Migrating to CreateImages (20100127235412)
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "photo_file_name" varchar(255), "photo_content_type" varchar(255), "photo_file_size" integer, "photo_updated_at" datetime, "imagable_id" integer, "imagable_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100127235412')
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+  [1m[36mSQL (0.3ms)[0m  [1mALTER TABLE "property_searches" ADD "min_of_bathrooms" integer[0m
+  [1m[35mSQL (0.1ms)[0m  ALTER TABLE "property_searches" ADD "max_of_bathrooms" integer
+  [1m[36mSQL (0.1ms)[0m  [1mALTER TABLE "property_searches" ADD "min_of_bedrooms" integer[0m
+  [1m[35mSQL (0.1ms)[0m  ALTER TABLE "property_searches" ADD "max_of_bedrooms" integer
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "property_searches" ADD "min_of_carparks" integer[0m
+  [1m[35mSQL (0.1ms)[0m  ALTER TABLE "property_searches" ADD "max_of_carparks" integer
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE TEMPORARY TABLE "altered_property_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "keywords" varchar(255), "min_price" integer, "max_price" integer, "num_of_bedrooms" integer, "num_of_bathrooms" integer, "num_of_carparks" integer, "property_type" varchar(255), "created_at" datetime, "updated_at" datetime, "min_of_bathrooms" integer, "max_of_bathrooms" integer, "min_of_bedrooms" integer, "max_of_bedrooms" integer, "min_of_carparks" integer, "max_of_carparks" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("property_searches")
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "property_searches"[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "property_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "keywords" varchar(255), "min_price" integer, "max_price" integer, "num_of_bedrooms" integer, "num_of_carparks" integer, "property_type" varchar(255), "created_at" datetime, "updated_at" datetime, "min_of_bathrooms" integer, "max_of_bathrooms" integer, "min_of_bedrooms" integer, "max_of_bedrooms" integer, "min_of_carparks" integer, "max_of_carparks" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_property_searches")[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "altered_property_searches"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_property_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "keywords" varchar(255), "min_price" integer, "max_price" integer, "num_of_bedrooms" integer, "num_of_carparks" integer, "property_type" varchar(255), "created_at" datetime, "updated_at" datetime, "min_of_bathrooms" integer, "max_of_bathrooms" integer, "min_of_bedrooms" integer, "max_of_bedrooms" integer, "min_of_carparks" integer, "max_of_carparks" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("property_searches")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "property_searches"[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "property_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "keywords" varchar(255), "min_price" integer, "max_price" integer, "num_of_carparks" integer, "property_type" varchar(255), "created_at" datetime, "updated_at" datetime, "min_of_bathrooms" integer, "max_of_bathrooms" integer, "min_of_bedrooms" integer, "max_of_bedrooms" integer, "min_of_carparks" integer, "max_of_carparks" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_property_searches")[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "altered_property_searches"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_property_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "keywords" varchar(255), "min_price" integer, "max_price" integer, "num_of_carparks" integer, "property_type" varchar(255), "created_at" datetime, "updated_at" datetime, "min_of_bathrooms" integer, "max_of_bathrooms" integer, "min_of_bedrooms" integer, "max_of_bedrooms" integer, "min_of_carparks" integer, "max_of_carparks" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("property_searches")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "property_searches"[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "property_searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "keywords" varchar(255), "min_price" integer, "max_price" integer, "property_type" varchar(255), "created_at" datetime, "updated_at" datetime, "min_of_bathrooms" integer, "max_of_bathrooms" integer, "min_of_bedrooms" integer, "max_of_bedrooms" integer, "min_of_carparks" integer, "max_of_carparks" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_property_searches")[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "altered_property_searches"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100209125159')[0m
+Migrating to ChangeReferenceForAddress (20100216103345)
+  [1m[35mSQL (0.2ms)[0m  CREATE TEMPORARY TABLE "altered_addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "line1" varchar(255), "line2" varchar(255), "addressable_id" integer, "addressable_type" varchar(255), "suburb_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("addresses")[0m
+  [1m[35mSQL (0.3ms)[0m  DROP TABLE "addresses"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "line1" varchar(255), "line2" varchar(255), "addressable_type" varchar(255), "suburb_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_addresses")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "altered_addresses"[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE TEMPORARY TABLE "altered_addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "line1" varchar(255), "line2" varchar(255), "addressable_type" varchar(255), "suburb_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("addresses")[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "addresses"
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "line1" varchar(255), "line2" varchar(255), "suburb_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_addresses")
+  [1m[36mSQL (0.1ms)[0m  [1mDROP TABLE "altered_addresses"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100216103345')
+Migrating to CreateSearches (20100216113117)
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "keyword" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100216113117')
+Migrating to AddReferenceForAddress (20100216122556)
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "addresses" ADD "post_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100216122556')
+Migrating to ChangeReferenceToImage (20100301065823)
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "photo_file_name" varchar(255), "photo_content_type" varchar(255), "photo_file_size" integer, "photo_updated_at" datetime, "imagable_id" integer, "imagable_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("images")
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "images"[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "photo_file_name" varchar(255), "photo_content_type" varchar(255), "photo_file_size" integer, "photo_updated_at" datetime, "imagable_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_images")[0m
+  [1m[35mSQL (0.1ms)[0m  DROP TABLE "altered_images"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "photo_file_name" varchar(255), "photo_content_type" varchar(255), "photo_file_size" integer, "photo_updated_at" datetime, "imagable_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("images")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "images"[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "photo_file_name" varchar(255), "photo_content_type" varchar(255), "photo_file_size" integer, "photo_updated_at" datetime, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_images")[0m
+  [1m[35mSQL (0.1ms)[0m  DROP TABLE "altered_images"
+  [1m[36mSQL (0.1ms)[0m  [1mALTER TABLE "images" ADD "post_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100301065823')
+Migrating to AddReferenceToPropertySearch (20100306062514)
+  [1m[36mSQL (0.3ms)[0m  [1mALTER TABLE "property_searches" ADD "search_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100306062514')
+Migrating to CreateSessions (20100306072215)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" varchar(255) NOT NULL, "data" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("sessions")
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE INDEX "index_sessions_on_session_id" ON "sessions" ("session_id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("sessions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_sessions_on_session_id')[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_sessions_on_updated_at" ON "sessions" ("updated_at")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100306072215')[0m
+Migrating to AddLatLngToAddress (20100404051547)
+  [1m[35mSQL (0.3ms)[0m  ALTER TABLE "addresses" ADD "lat" float
+  [1m[36mSQL (0.1ms)[0m  [1mALTER TABLE "addresses" ADD "lng" float[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100404051547')
+Migrating to AddLatLngToSuburb (20100406134506)
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "suburbs" ADD "lat" float[0m
+  [1m[35mSQL (0.1ms)[0m  ALTER TABLE "suburbs" ADD "lng" float
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100406134506')[0m
+Migrating to AddUserReferenceToPost (20100410013248)
+  [1m[35mSQL (0.3ms)[0m  ALTER TABLE "posts" ADD "user_id" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100410013248')[0m
+Migrating to RemovePostableFromPost (20100410024706)
+  [1m[35mSQL (0.2ms)[0m  CREATE TEMPORARY TABLE "altered_posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "available_from" date, "expiry_date" date, "inspection_time" varchar(255), "negotiable" boolean, "postable_id" integer, "postable_type" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("posts")[0m
+  [1m[35mSQL (0.3ms)[0m  DROP TABLE "posts"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "available_from" date, "expiry_date" date, "inspection_time" varchar(255), "negotiable" boolean, "postable_type" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_posts")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "altered_posts"[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE TEMPORARY TABLE "altered_posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "available_from" date, "expiry_date" date, "inspection_time" varchar(255), "negotiable" boolean, "postable_type" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("posts")[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "posts"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "available_from" date, "expiry_date" date, "inspection_time" varchar(255), "negotiable" boolean, "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_posts")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "altered_posts"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100410024706')
+Migrating to AddPostToProperty (20100410025005)
+  [1m[36mSQL (0.3ms)[0m  [1mALTER TABLE "properties" ADD "post_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100410025005')
+Migrating to CreateContacts (20100411090251)
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "contacts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "phone" varchar(255), "email" varchar(255), "is_main" boolean, "contactable_id" integer, "contactable_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100411090251')
+Migrating to ChangeAddressTable (20100416183702)
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "suburbs"[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "addresses"
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "post_id" integer, "building_name" varchar(255), "suite_unit" varchar(255), "street_number" varchar(255), "street_name" varchar(255), "town" varchar(255), "state" varchar(255), "country" varchar(255), "postcode" integer, "lat" decimal(15,10), "lng" decimal(15,10), "creator_id" integer, "updater_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100416183702')[0m
+Migrating to Suburb (20100509051256)
+  [1m[35mSQL (0.3ms)[0m  CREATE TABLE "suburbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "state" varchar(255), "postcode" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100509051256')[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("addresses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("carparks")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("contacts")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("images")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("posts")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("properties")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("property_searches")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("searches")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("sessions")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_sessions_on_updated_at')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_sessions_on_session_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("suburbs")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_perishable_token')[0m
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:1)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:2)
+DEPRECATION WARNING: ActionController::Base.session= is deprecated. Please configure it on your application with config.session_store :cookie_store, :key => '....'. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/session_store.rb:7)
+
+
+Started GET "/searches/new" for 127.0.0.1 at 2010-11-07 11:15:44 +1100
+  Processing by SearchesController#new as HTML
+DEPRECATION WARNING: Base#after_initialize has been deprecated, please use Base.after_initialize :method instead. (called from <class:Search> at /Users/leoliang/Rails/found/app/models/search.rb:6)
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendered property_searches/_form.html.erb (43.7ms)
+Rendered searches/_form.html.erb (52.9ms)
+Rendered layouts/_navigator.html.erb (22.2ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (81.9ms)
+Completed 200 OK in 132ms (Views: 86.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png" for 127.0.0.1 at 2010-11-07 11:15:46 +1100
+
+ActionController::RoutingError (No route matches "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png"):
+  
+
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/suburbs/search/?keyword=2134&limit=3" for 127.0.0.1 at 2010-11-07 11:16:19 +1100
+  Processing by SuburbsController#search as JSON
+  Parameters: {"keyword"=>"2134", "limit"=>"3"}
+  [1m[35mSuburb Load (1.1ms)[0m  SELECT "suburbs".* FROM "suburbs" WHERE (suburbs.name like '2134') LIMIT 3 OFFSET 0
+Completed 200 OK in 35ms (Views: 6.5ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/searches" for 127.0.0.1 at 2010-11-07 11:16:20 +1100
+  Processing by SearchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8=", "search"=>{"keyword"=>"2134", "property_search_attributes"=>{"min_price"=>"", "max_price"=>"", "min_of_bedrooms"=>"", "max_of_bedrooms"=>"", "min_of_bathrooms"=>"", "max_of_bathrooms"=>"", "min_of_carparks"=>"", "max_of_carparks"=>"", "property_type"=>""}}, "commit"=>"Search"}
+Redirected to http://localhost:3000/searches/show
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 11:16:21 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+DEPRECATION WARNING: Base#after_initialize has been deprecated, please use Base.after_initialize :method instead. (called from <class:Search> at /Users/leoliang/Rails/found/app/models/search.rb:6)
+WARNING: Can't mass-assign protected attributes: property_search_attributes
+  [1m[36mProperty Load (0.2ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties"."price" >= 0.0) AND ("properties"."price" <= 0.0) AND ("properties"."number_of_bedrooms" >= 0) AND ("properties"."number_of_bedrooms" <= 0) AND ("properties"."number_of_bathrooms" >= 0) AND ("properties"."number_of_bathrooms" <= 0) AND ("properties"."number_of_carparks" >= 0) AND ("properties"."number_of_carparks" <= 0) AND ("properties"."prop_type" = '')[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON "addresses"."post_id" = "posts"."id" INNER JOIN "properties" ON "properties"."post_id" = "posts"."id" WHERE (addresses.town like '2134' or addresses.state like '2134' or addresses.postcode like '2134') LIMIT 2 OFFSET 0
+Rendered property_searches/_form.html.erb (1.5ms)
+Rendered searches/_form.html.erb (3.1ms)
+Rendered layouts/_navigator.html.erb (21.9ms)
+Rendered layouts/_footer.html.erb (0.2ms)
+Rendered welcome/index.html.erb within layouts/application (31.1ms)
+Completed 200 OK in 325ms (Views: 35.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png" for 127.0.0.1 at 2010-11-07 11:16:21 +1100
+
+ActionController::RoutingError (No route matches "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png"):
+  
+
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started POST "/searches" for 127.0.0.1 at 2010-11-07 11:24:44 +1100
+  Processing by SearchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8=", "search"=>{"keyword"=>"2134", "property_search_attributes"=>{"min_price"=>"", "max_price"=>"", "min_of_bedrooms"=>"", "max_of_bedrooms"=>"", "min_of_bathrooms"=>"", "max_of_bathrooms"=>"", "min_of_carparks"=>"", "max_of_carparks"=>"", "property_type"=>""}}, "commit"=>"Search"}
+Redirected to http://localhost:3000/searches/show
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 11:24:44 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+WARNING: Can't mass-assign protected attributes: property_search_attributes
+Completed   in 64ms
+
+SystemStackError (stack level too deep):
+  
+
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.7ms)
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.0ms)
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 11:27:45 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+DEPRECATION WARNING: Base#after_initialize has been deprecated, please use Base.after_initialize :method instead. (called from <class:Search> at /Users/leoliang/Rails/found/app/models/search.rb:6)
+WARNING: Can't mass-assign protected attributes: property_search_attributes
+  [1m[36mProperty Load (0.2ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties"."price" >= 0.0) AND ("properties"."price" <= 0.0) AND ("properties"."number_of_bedrooms" >= 0) AND ("properties"."number_of_bedrooms" <= 0) AND ("properties"."number_of_bathrooms" >= 0) AND ("properties"."number_of_bathrooms" <= 0) AND ("properties"."number_of_carparks" >= 0) AND ("properties"."number_of_carparks" <= 0) AND ("properties"."prop_type" = '')[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON "addresses"."post_id" = "posts"."id" INNER JOIN "properties" ON "properties"."post_id" = "posts"."id" WHERE (addresses.town like '2134' or addresses.state like '2134' or addresses.postcode like '2134') LIMIT 2 OFFSET 0
+Rendered property_searches/_form.html.erb (1.5ms)
+Rendered searches/_form.html.erb (3.1ms)
+Rendered layouts/_navigator.html.erb (21.9ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (30.2ms)
+Completed 200 OK in 334ms (Views: 33.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png" for 127.0.0.1 at 2010-11-07 11:27:45 +1100
+
+ActionController::RoutingError (No route matches "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png"):
+  
+
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started POST "/searches" for 127.0.0.1 at 2010-11-07 11:31:03 +1100
+  Processing by SearchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8=", "search"=>{"keyword"=>"2134", "property_search_attributes"=>{"min_price"=>"", "max_price"=>"", "min_of_bedrooms"=>"", "max_of_bedrooms"=>"", "min_of_bathrooms"=>"", "max_of_bathrooms"=>"", "min_of_carparks"=>"", "max_of_carparks"=>"", "property_type"=>""}}, "commit"=>"Search"}
+Redirected to http://localhost:3000/searches/show
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 11:31:03 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+WARNING: Can't mass-assign protected attributes: property_search_attributes
+  [1m[36mProperty Load (0.2ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties"."price" >= 0.0) AND ("properties"."price" <= 0.0) AND ("properties"."number_of_bedrooms" >= 0) AND ("properties"."number_of_bedrooms" <= 0) AND ("properties"."number_of_bathrooms" >= 0) AND ("properties"."number_of_bathrooms" <= 0) AND ("properties"."number_of_carparks" >= 0) AND ("properties"."number_of_carparks" <= 0) AND ("properties"."prop_type" = '')[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON "addresses"."post_id" = "posts"."id" INNER JOIN "properties" ON "properties"."post_id" = "posts"."id" WHERE (addresses.town like '2134' or addresses.state like '2134' or addresses.postcode like '2134') LIMIT 2 OFFSET 0
+Rendered property_searches/_form.html.erb (1.6ms)
+Rendered searches/_form.html.erb (3.0ms)
+Rendered layouts/_navigator.html.erb (22.7ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (30.9ms)
+Completed 200 OK in 441ms (Views: 34.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png" for 127.0.0.1 at 2010-11-07 11:31:04 +1100
+
+ActionController::RoutingError (No route matches "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png"):
+  
+
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 11:31:30 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+WARNING: Can't mass-assign protected attributes: property_search_attributes
+  [1m[36mProperty Load (0.2ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties"."price" >= 0.0) AND ("properties"."price" <= 0.0) AND ("properties"."number_of_bedrooms" >= 0) AND ("properties"."number_of_bedrooms" <= 0) AND ("properties"."number_of_bathrooms" >= 0) AND ("properties"."number_of_bathrooms" <= 0) AND ("properties"."number_of_carparks" >= 0) AND ("properties"."number_of_carparks" <= 0) AND ("properties"."prop_type" = '')[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON "addresses"."post_id" = "posts"."id" INNER JOIN "properties" ON "properties"."post_id" = "posts"."id" WHERE (addresses.town like '2134' or addresses.state like '2134' or addresses.postcode like '2134') LIMIT 2 OFFSET 0
+Rendered property_searches/_form.html.erb (1.5ms)
+Rendered searches/_form.html.erb (2.9ms)
+Rendered layouts/_navigator.html.erb (21.5ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (29.7ms)
+Completed 200 OK in 306ms (Views: 33.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png" for 127.0.0.1 at 2010-11-07 11:31:30 +1100
+
+ActionController::RoutingError (No route matches "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png"):
+  
+
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 11:39:04 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mProperty Load (0.2ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties"."price" >= 0.0) AND ("properties"."price" <= 0.0) AND ("properties"."number_of_bedrooms" >= 0) AND ("properties"."number_of_bedrooms" <= 0) AND ("properties"."number_of_bathrooms" >= 0) AND ("properties"."number_of_bathrooms" <= 0) AND ("properties"."number_of_carparks" >= 0) AND ("properties"."number_of_carparks" <= 0) AND ("properties"."prop_type" = '')[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON "addresses"."post_id" = "posts"."id" INNER JOIN "properties" ON "properties"."post_id" = "posts"."id" WHERE (addresses.town like '2134' or addresses.state like '2134' or addresses.postcode like '2134') LIMIT 2 OFFSET 0
+Rendered property_searches/_form.html.erb (1.4ms)
+Rendered searches/_form.html.erb (2.9ms)
+Rendered layouts/_navigator.html.erb (22.0ms)
+Rendered layouts/_footer.html.erb (0.2ms)
+Rendered welcome/index.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 375ms (Views: 39.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png" for 127.0.0.1 at 2010-11-07 11:39:05 +1100
+
+ActionController::RoutingError (No route matches "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png"):
+  
+
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started POST "/searches" for 127.0.0.1 at 2010-11-07 15:53:58 +1100
+  Processing by SearchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8=", "search"=>{"keyword"=>"2134", "property_search_attributes"=>{"min_price"=>"", "max_price"=>"", "min_of_bedrooms"=>"", "max_of_bedrooms"=>"", "min_of_bathrooms"=>"", "max_of_bathrooms"=>"", "min_of_carparks"=>"", "max_of_carparks"=>"", "property_type"=>""}}, "commit"=>"Search"}
+Redirected to http://localhost:3000/searches/show
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 15:53:58 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mProperty Load (0.6ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties"."price" >= 0.0) AND ("properties"."price" <= 0.0) AND ("properties"."number_of_bedrooms" >= 0) AND ("properties"."number_of_bedrooms" <= 0) AND ("properties"."number_of_bathrooms" >= 0) AND ("properties"."number_of_bathrooms" <= 0) AND ("properties"."number_of_carparks" >= 0) AND ("properties"."number_of_carparks" <= 0) AND ("properties"."prop_type" = '')[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON "addresses"."post_id" = "posts"."id" INNER JOIN "properties" ON "properties"."post_id" = "posts"."id" WHERE (addresses.town like '2134' or addresses.state like '2134' or addresses.postcode like '2134') LIMIT 2 OFFSET 0
+Rendered property_searches/_form.html.erb (1.5ms)
+Rendered searches/_form.html.erb (3.3ms)
+Rendered layouts/_navigator.html.erb (43.0ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (53.2ms)
+Completed 200 OK in 333ms (Views: 57.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png" for 127.0.0.1 at 2010-11-07 15:53:59 +1100
+
+ActionController::RoutingError (No route matches "/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png"):
+  
+
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started POST "/searches" for 127.0.0.1 at 2010-11-07 15:58:12 +1100
+  Processing by SearchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8=", "search"=>{"keyword"=>"2134", "property_search_attributes"=>{"min_price"=>"", "max_price"=>"", "min_of_bedrooms"=>"", "max_of_bedrooms"=>"", "min_of_bathrooms"=>"", "max_of_bathrooms"=>"", "min_of_carparks"=>"", "max_of_carparks"=>"", "property_type"=>""}}, "commit"=>"Search"}
+Redirected to http://localhost:3000/searches/show
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 15:58:12 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mProperty Load (0.2ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties"."price" >= 0.0) AND ("properties"."price" <= 0.0) AND ("properties"."number_of_bedrooms" >= 0) AND ("properties"."number_of_bedrooms" <= 0) AND ("properties"."number_of_bathrooms" >= 0) AND ("properties"."number_of_bathrooms" <= 0) AND ("properties"."number_of_carparks" >= 0) AND ("properties"."number_of_carparks" <= 0) AND ("properties"."prop_type" = '')[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON "addresses"."post_id" = "posts"."id" INNER JOIN "properties" ON "properties"."post_id" = "posts"."id" WHERE (addresses.town like '2134' or addresses.state like '2134' or addresses.postcode like '2134') LIMIT 2 OFFSET 0
+Rendered property_searches/_form.html.erb (21.1ms)
+Rendered searches/_form.html.erb (22.5ms)
+Rendered layouts/_navigator.html.erb (22.0ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (49.9ms)
+Completed 200 OK in 308ms (Views: 53.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2010-11-07 15:58:18 +1100
+  Processing by UserSessionsController#new as JS
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_user_sessions__form_html_erb__1560250399421624613_2189705760_4547030856827872015 at /Users/leoliang/Rails/found/app/views/user_sessions/_form.html.erb:1)
+Rendered user_sessions/_form.html.erb (2.1ms)
+Rendered user_sessions/new.js.erb (3.6ms)
+Completed 200 OK in 28ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2010-11-07 15:59:26 +1100
+  Processing by UserSessionsController#new as JS
+Rendered user_sessions/_form.html.erb (1.9ms)
+Rendered user_sessions/new.js.erb (3.0ms)
+Completed 200 OK in 26ms (Views: 9.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2010-11-07 15:59:31 +1100
+  Processing by UserSessionsController#new as JS
+Rendered user_sessions/_form.html.erb (1.8ms)
+Rendered user_sessions/new.js.erb (2.9ms)
+Completed 200 OK in 47ms (Views: 9.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2010-11-07 15:59:45 +1100
+  Processing by UsersController#new as HTML
+Rendered users/_term.html.erb (0.2ms)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_users__form_html_erb__2227487308589204501_2189455640_4547030856827872015 at /Users/leoliang/Rails/found/app/views/users/_form.html.erb:1)
+Rendered users/_form.html.erb (7.6ms)
+Rendered layouts/_navigator.html.erb (1.0ms)
+Rendered layouts/_footer.html.erb (0.2ms)
+Rendered users/new.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 35ms (Views: 17.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2010-11-07 16:02:44 +1100
+  Processing by UsersController#new as HTML
+Rendered users/_term.html.erb (0.2ms)
+Rendered users/_form.html.erb (6.9ms)
+Rendered layouts/_navigator.html.erb (0.9ms)
+Rendered layouts/_footer.html.erb (0.2ms)
+Rendered users/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 33ms (Views: 15.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2010-11-07 16:03:07 +1100
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8=", "user"=>{"username"=>"leomao10", "email"=>"leoliang_climber@hotmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[36mUser Load (13.2ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('leoliang_climber@hotmail.com')) LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."username") = LOWER('leomao10')) LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."persistence_token" = '7fed91b945cbcab7ed6a62dedcd33cd7b26adf349966f08f46fc90a4d2d33e4ed09c39b345410351b8ae03a967560fe7204e7279fd84814fbf8a2896763b2bbb') LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "users" ("created_at", "crypted_password", "email", "password_salt", "perishable_token", "persistence_token", "updated_at", "username") VALUES ('2010-11-07 05:03:07.548489', '9c4121aa690dfc6916a067b36aef6ea030196593f0d6bfb40115eb67e60722cb285755837394a4a5093b35cfade40dfc28b0fe45ea676dfd3c1dc88cc38dcd12', 'leoliang_climber@hotmail.com', 'UyuL_naECtDIsAE7feIH', 'Xpnz7JwlaL-OrLk4aTXf', '7fed91b945cbcab7ed6a62dedcd33cd7b26adf349966f08f46fc90a4d2d33e4ed09c39b345410351b8ae03a967560fe7204e7279fd84814fbf8a2896763b2bbb', '2010-11-07 05:03:07.548489', 'leomao10')
+Redirected to http://localhost:3000/
+Completed 302 Found in 166ms
+
+
+Started GET "/" for 127.0.0.1 at 2010-11-07 16:03:07 +1100
+  Processing by WelcomeController#index as HTML
+Redirected to http://localhost:3000/searches/new
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/new" for 127.0.0.1 at 2010-11-07 16:03:07 +1100
+  Processing by SearchesController#new as HTML
+Rendered property_searches/_form.html.erb (32.7ms)
+Rendered searches/_form.html.erb (40.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."persistence_token" = '7fed91b945cbcab7ed6a62dedcd33cd7b26adf349966f08f46fc90a4d2d33e4ed09c39b345410351b8ae03a967560fe7204e7279fd84814fbf8a2896763b2bbb') LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."persistence_token" = '7fed91b945cbcab7ed6a62dedcd33cd7b26adf349966f08f46fc90a4d2d33e4ed09c39b345410351b8ae03a967560fe7204e7279fd84814fbf8a2896763b2bbb') LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."persistence_token" = '7fed91b945cbcab7ed6a62dedcd33cd7b26adf349966f08f46fc90a4d2d33e4ed09c39b345410351b8ae03a967560fe7204e7279fd84814fbf8a2896763b2bbb') LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered layouts/_navigator.html.erb (81.8ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Rendered welcome/index.html.erb within layouts/application (128.1ms)
+Completed 200 OK in 153ms (Views: 131.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/current/edit" for 127.0.0.1 at 2010-11-07 16:03:22 +1100
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"current"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."persistence_token" = '7fed91b945cbcab7ed6a62dedcd33cd7b26adf349966f08f46fc90a4d2d33e4ed09c39b345410351b8ae03a967560fe7204e7279fd84814fbf8a2896763b2bbb') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."persistence_token" = '7fed91b945cbcab7ed6a62dedcd33cd7b26adf349966f08f46fc90a4d2d33e4ed09c39b345410351b8ae03a967560fe7204e7279fd84814fbf8a2896763b2bbb') LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered users/_term.html.erb (0.2ms)
+Rendered users/_form.html.erb (2.6ms)
+Rendered layouts/_navigator.html.erb (1.0ms)
+Rendered layouts/_footer.html.erb (0.2ms)
+Rendered users/edit.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 90ms (Views: 19.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2010-11-07 16:03:32 +1100
+  Processing by UserSessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."persistence_token" = '7fed91b945cbcab7ed6a62dedcd33cd7b26adf349966f08f46fc90a4d2d33e4ed09c39b345410351b8ae03a967560fe7204e7279fd84814fbf8a2896763b2bbb') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 38ms
+
+
+Started GET "/" for 127.0.0.1 at 2010-11-07 16:03:32 +1100
+  Processing by WelcomeController#index as HTML
+Redirected to http://localhost:3000/searches/new
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/new" for 127.0.0.1 at 2010-11-07 16:03:32 +1100
+  Processing by SearchesController#new as HTML
+Rendered property_searches/_form.html.erb (11.9ms)
+Rendered searches/_form.html.erb (41.6ms)
+Rendered layouts/_navigator.html.erb (21.7ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (68.4ms)
+Completed 200 OK in 93ms (Views: 71.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2010-11-07 16:03:42 +1100
+  Processing by UserSessionsController#new as JS
+Rendered user_sessions/_form.html.erb (1.8ms)
+Rendered user_sessions/new.js.erb (2.9ms)
+Completed 200 OK in 26ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user_sessions" for 127.0.0.1 at 2010-11-07 16:03:48 +1100
+  Processing by UserSessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8=", "user_session"=>{"username"=>"leomao10", "password"=>"[FILTERED]"}, "commit"=>"SIGN IN"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE (LOWER("users".username) = 'leomao10') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "perishable_token" = '25vXzBm8nAr81WzGzvR-', "updated_at" = '2010-11-07 05:03:49.072468' WHERE ("users"."id" = 1)
+Redirected to http://localhost:3000/
+Completed 302 Found in 152ms
+
+
+Started GET "/" for 127.0.0.1 at 2010-11-07 16:03:49 +1100
+  Processing by WelcomeController#index as HTML
+Redirected to http://localhost:3000/searches/new
+Completed 302 Found in 0ms
+
+
+Started GET "/searches/new" for 127.0.0.1 at 2010-11-07 16:03:49 +1100
+  Processing by SearchesController#new as HTML
+Rendered property_searches/_form.html.erb (11.6ms)
+Rendered searches/_form.html.erb (19.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered layouts/_navigator.html.erb (104.4ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (129.0ms)
+Completed 200 OK in 177ms (Views: 132.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2010-11-07 16:03:53 +1100
+  Processing by PostsController#new as HTML
+Rendered addresses/_fields.html.erb (1.0ms)
+Rendered properties/_fields.html.erb (1.6ms)
+Rendered contacts/_fields.html.erb (0.6ms)
+Rendered posts/_fields.html.erb (26.4ms)
+Rendered posts/_form.html.erb (28.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered layouts/_navigator.html.erb (102.7ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered posts/new.html.erb within layouts/application (136.1ms)
+Completed 200 OK in 277ms (Views: 140.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/addresses/postcode_check?postcode=2134&suburb=NSW" for 127.0.0.1 at 2010-11-07 16:04:16 +1100
+  Processing by AddressesController#show as JS
+  Parameters: {"postcode"=>"2134", "suburb"=>"NSW", "id"=>"postcode_check"}
+Completed   in 33ms
+
+ActiveRecord::RecordNotFound (Couldn't find Post without an ID):
+  app/controllers/addresses_controller.rb:24:in `get_post'
+
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.2ms)
+Rendered /Users/leoliang/.rvm/gems/ruby-1.9.2-p0@rails3/gems/actionpack-3.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.2ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2010-11-07 16:04:58 +1100
+  Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8="}
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("available_from", "created_at", "description", "expiry_date", "inspection_time", "negotiable", "title", "updated_at", "user_id") VALUES (NULL, '2010-11-07 05:04:58.738054', NULL, NULL, NULL, NULL, NULL, '2010-11-07 05:04:58.738054', NULL)[0m
+  [1m[35mAddress Load (0.1ms)[0m  SELECT "addresses".* FROM "addresses" WHERE ("addresses".post_id = 1) LIMIT 1
+  [1m[36mProperty Load (0.1ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties".post_id = 1) LIMIT 1[0m
+Rendered posts/_detail.html.erb (24.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered layouts/_navigator.html.erb (105.0ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered posts/preview.html.erb within layouts/application (135.3ms)
+Completed 200 OK in 195ms (Views: 138.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/1/confirm" for 127.0.0.1 at 2010-11-07 16:05:18 +1100
+  Processing by PostsController#confirm as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2010-11-07 16:05:18 +1100
+  Processing by WelcomeController#index as HTML
+Redirected to http://localhost:3000/searches/new
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/new" for 127.0.0.1 at 2010-11-07 16:05:18 +1100
+  Processing by SearchesController#new as HTML
+Rendered property_searches/_form.html.erb (34.7ms)
+Rendered searches/_form.html.erb (42.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered layouts/_navigator.html.erb (82.3ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (130.3ms)
+Completed 200 OK in 155ms (Views: 133.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/suburbs/search/?keyword=2134&limit=3" for 127.0.0.1 at 2010-11-07 16:05:25 +1100
+  Processing by SuburbsController#search as JSON
+  Parameters: {"keyword"=>"2134", "limit"=>"3"}
+  [1m[35mSuburb Load (0.5ms)[0m  SELECT "suburbs".* FROM "suburbs" WHERE (suburbs.name like '2134') LIMIT 3 OFFSET 0
+Completed 200 OK in 18ms (Views: 6.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/searches" for 127.0.0.1 at 2010-11-07 16:05:30 +1100
+  Processing by SearchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8=", "search"=>{"keyword"=>"2134", "property_search_attributes"=>{"min_price"=>"", "max_price"=>"", "min_of_bedrooms"=>"", "max_of_bedrooms"=>"", "min_of_bathrooms"=>"", "max_of_bathrooms"=>"", "min_of_carparks"=>"", "max_of_carparks"=>"", "property_type"=>""}}, "commit"=>"Search"}
+Redirected to http://localhost:3000/searches/show
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 16:05:30 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mProperty Load (0.2ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties"."price" >= 0.0) AND ("properties"."price" <= 0.0) AND ("properties"."number_of_bedrooms" >= 0) AND ("properties"."number_of_bedrooms" <= 0) AND ("properties"."number_of_bathrooms" >= 0) AND ("properties"."number_of_bathrooms" <= 0) AND ("properties"."number_of_carparks" >= 0) AND ("properties"."number_of_carparks" <= 0) AND ("properties"."prop_type" = '')[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON "addresses"."post_id" = "posts"."id" INNER JOIN "properties" ON "properties"."post_id" = "posts"."id" WHERE (addresses.town like '2134' or addresses.state like '2134' or addresses.postcode like '2134') LIMIT 2 OFFSET 0
+Rendered property_searches/_form.html.erb (1.4ms)
+Rendered searches/_form.html.erb (2.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered layouts/_navigator.html.erb (82.4ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (90.6ms)
+Completed 200 OK in 385ms (Views: 93.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/searches" for 127.0.0.1 at 2010-11-07 16:06:03 +1100
+  Processing by SearchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8=", "search"=>{"keyword"=>"2134", "property_search_attributes"=>{"min_price"=>"", "max_price"=>"", "min_of_bedrooms"=>"", "max_of_bedrooms"=>"", "min_of_bathrooms"=>"", "max_of_bathrooms"=>"", "min_of_carparks"=>"", "max_of_carparks"=>"", "property_type"=>""}}, "commit"=>"Search"}
+Redirected to http://localhost:3000/searches/show
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 16:06:03 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mProperty Load (0.2ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties"."price" >= 0.0) AND ("properties"."price" <= 0.0) AND ("properties"."number_of_bedrooms" >= 0) AND ("properties"."number_of_bedrooms" <= 0) AND ("properties"."number_of_bathrooms" >= 0) AND ("properties"."number_of_bathrooms" <= 0) AND ("properties"."number_of_carparks" >= 0) AND ("properties"."number_of_carparks" <= 0) AND ("properties"."prop_type" = '')[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON "addresses"."post_id" = "posts"."id" INNER JOIN "properties" ON "properties"."post_id" = "posts"."id" WHERE (addresses.town like '2134' or addresses.state like '2134' or addresses.postcode like '2134') LIMIT 2 OFFSET 0
+Rendered property_searches/_form.html.erb (1.4ms)
+Rendered searches/_form.html.erb (24.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered layouts/_navigator.html.erb (81.8ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (112.1ms)
+Completed 200 OK in 384ms (Views: 115.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 16:09:13 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mProperty Load (0.2ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties"."price" >= 0.0) AND ("properties"."price" <= 0.0) AND ("properties"."number_of_bedrooms" >= 0) AND ("properties"."number_of_bedrooms" <= 0) AND ("properties"."number_of_bathrooms" >= 0) AND ("properties"."number_of_bathrooms" <= 0) AND ("properties"."number_of_carparks" >= 0) AND ("properties"."number_of_carparks" <= 0) AND ("properties"."prop_type" = '')[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON "addresses"."post_id" = "posts"."id" INNER JOIN "properties" ON "properties"."post_id" = "posts"."id" WHERE (addresses.town like '2134' or addresses.state like '2134' or addresses.postcode like '2134') LIMIT 2 OFFSET 0
+Rendered property_searches/_form.html.erb (1.4ms)
+Rendered searches/_form.html.erb (2.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered layouts/_navigator.html.erb (103.4ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (111.6ms)
+Completed 200 OK in 384ms (Views: 115.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-11-07 16:43:05 +1100
+  Processing by WelcomeController#index as HTML
+Redirected to http://localhost:3000/searches/new
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/new" for 127.0.0.1 at 2010-11-07 16:43:05 +1100
+  Processing by SearchesController#new as HTML
+Rendered property_searches/_form.html.erb (35.6ms)
+Rendered searches/_form.html.erb (44.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered layouts/_navigator.html.erb (90.7ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (141.1ms)
+Completed 200 OK in 167ms (Views: 144.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/images/new" for 127.0.0.1 at 2010-11-07 16:43:15 +1100
+  Processing by ImagesController#new as HTML
+Rendered images/_form.html.erb (5.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered layouts/_navigator.html.erb (83.4ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered images/new.html.erb within layouts/application (109.9ms)
+Completed 200 OK in 146ms (Views: 114.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/images" for 127.0.0.1 at 2010-11-07 16:43:55 +1100
+  Processing by ImagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8=", "image"=>{"photo"=>#<File:/var/folders/gZ/gZi9CNgjGXeANHuJzDDip++++TM/-Tmp-/RackMultipart20101107-24247-1ocu7s1>, "post_id"=>""}, "commit"=>"Save"}
+[paperclip] identify '-format' '%wx%h' '/var/folders/gZ/gZi9CNgjGXeANHuJzDDip++++TM/-Tmp-/stream,24247,0.jpg[0]' 2>/dev/null
+[paperclip] convert '/var/folders/gZ/gZi9CNgjGXeANHuJzDDip++++TM/-Tmp-/stream,24247,0.jpg[0]' '-resize' '400x300>' '/var/folders/gZ/gZi9CNgjGXeANHuJzDDip++++TM/-Tmp-/stream,24247,0,24247,0' 2>/dev/null
+[paperclip] identify '-format' '%wx%h' '/var/folders/gZ/gZi9CNgjGXeANHuJzDDip++++TM/-Tmp-/stream,24247,0.jpg[0]' 2>/dev/null
+[paperclip] convert '/var/folders/gZ/gZi9CNgjGXeANHuJzDDip++++TM/-Tmp-/stream,24247,0.jpg[0]' '-resize' '120x90>' '/var/folders/gZ/gZi9CNgjGXeANHuJzDDip++++TM/-Tmp-/stream,24247,0,24247,1' 2>/dev/null
+  [1m[36mSQL (16.7ms)[0m  [1mINSERT INTO "images" ("created_at", "photo_content_type", "photo_file_name", "photo_file_size", "photo_updated_at", "post_id", "updated_at") VALUES ('2010-11-07 05:43:55.260010', 'image/jpeg', 'asparagus.jpg', 8943, '2010-11-07 05:43:55.171378', NULL, '2010-11-07 05:43:55.260010')[0m
+[paperclip] Saving attachments.
+[paperclip] saving /Users/leoliang/Rails/found/public/system/photos/1/original/asparagus.jpg
+[paperclip] saving /Users/leoliang/Rails/found/public/system/photos/1/medium/asparagus.jpg
+[paperclip] saving /Users/leoliang/Rails/found/public/system/photos/1/thumb/asparagus.jpg
+Redirected to http://localhost:3000/images/1
+Completed 302 Found in 174ms
+
+
+Started GET "/images/1" for 127.0.0.1 at 2010-11-07 16:43:55 +1100
+  Processing by ImagesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered layouts/_navigator.html.erb (115.7ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered images/show.html.erb within layouts/application (133.4ms)
+Completed 200 OK in 169ms (Views: 155.4ms | ActiveRecord: 0.4ms)
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:1)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:2)
+DEPRECATION WARNING: ActionController::Base.session= is deprecated. Please configure it on your application with config.session_store :cookie_store, :key => '....'. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/session_store.rb:7)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+Migrating to AddReferenceForAddress (20100216122556)
+Migrating to ChangeReferenceToImage (20100301065823)
+Migrating to AddReferenceToPropertySearch (20100306062514)
+Migrating to CreateSessions (20100306072215)
+Migrating to AddLatLngToAddress (20100404051547)
+Migrating to AddLatLngToSuburb (20100406134506)
+Migrating to AddUserReferenceToPost (20100410013248)
+Migrating to RemovePostableFromPost (20100410024706)
+Migrating to AddPostToProperty (20100410025005)
+Migrating to CreateContacts (20100411090251)
+Migrating to ChangeAddressTable (20100416183702)
+Migrating to Suburb (20100509051256)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("addresses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("carparks")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("contacts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("images")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("properties")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("property_searches")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("searches")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("sessions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_sessions_on_updated_at')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_sessions_on_session_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("suburbs")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_perishable_token')
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:1)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:2)
+DEPRECATION WARNING: ActionController::Base.session= is deprecated. Please configure it on your application with config.session_store :cookie_store, :key => '....'. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/session_store.rb:7)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:1)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:2)
+DEPRECATION WARNING: ActionController::Base.session= is deprecated. Please configure it on your application with config.session_store :cookie_store, :key => '....'. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/session_store.rb:7)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2010-11-07 17:45:24 +1100
+  Processing by UsersController#new as HTML
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+DEPRECATION WARNING: Using #request_uri is deprecated. Use fullpath instead. (called from store_location at /Users/leoliang/Rails/found/app/controllers/application_controller.rb:42)
+Redirected to http://localhost:3000/
+Completed 302 Found in 103ms
+
+
+Started GET "/" for 127.0.0.1 at 2010-11-07 17:45:24 +1100
+  Processing by WelcomeController#index as HTML
+Redirected to http://localhost:3000/searches/new
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/new" for 127.0.0.1 at 2010-11-07 17:45:24 +1100
+  Processing by SearchesController#new as HTML
+Rendered property_searches/_form.html.erb (18.2ms)
+Rendered searches/_form.html.erb (27.4ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered layouts/_navigator.html.erb (103.4ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered welcome/index.html.erb within layouts/application (137.4ms)
+Completed 200 OK in 177ms (Views: 141.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/suburbs/search/?keyword=2134&limit=3" for 127.0.0.1 at 2010-11-07 17:45:27 +1100
+  Processing by SuburbsController#search as JSON
+  Parameters: {"keyword"=>"2134", "limit"=>"3"}
+  [1m[35mSuburb Load (0.5ms)[0m  SELECT "suburbs".* FROM "suburbs" WHERE (suburbs.name like '2134') LIMIT 3 OFFSET 0
+Completed 200 OK in 43ms (Views: 7.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/searches" for 127.0.0.1 at 2010-11-07 17:45:29 +1100
+  Processing by SearchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sVQqHB5fMkXJRRQA87m8KT3B/yF4zQ+i1LEpm0lj6a8=", "search"=>{"keyword"=>"2134", "property_search_attributes"=>{"min_price"=>"", "max_price"=>"", "min_of_bedrooms"=>"", "max_of_bedrooms"=>"", "min_of_bathrooms"=>"", "max_of_bathrooms"=>"", "min_of_carparks"=>"", "max_of_carparks"=>"", "property_type"=>""}}, "commit"=>"Search"}
+Redirected to http://localhost:3000/searches/show
+Completed 302 Found in 1ms
+
+
+Started GET "/searches/show" for 127.0.0.1 at 2010-11-07 17:45:29 +1100
+  Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mProperty Load (10.2ms)[0m  [1mSELECT "properties".* FROM "properties" WHERE ("properties"."price" >= 0.0) AND ("properties"."price" <= 0.0) AND ("properties"."number_of_bedrooms" >= 0) AND ("properties"."number_of_bedrooms" <= 0) AND ("properties"."number_of_bathrooms" >= 0) AND ("properties"."number_of_bathrooms" <= 0) AND ("properties"."number_of_carparks" >= 0) AND ("properties"."number_of_carparks" <= 0) AND ("properties"."prop_type" = '')[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON "addresses"."post_id" = "posts"."id" INNER JOIN "properties" ON "properties"."post_id" = "posts"."id" WHERE (addresses.town like '2134' or addresses.state like '2134' or addresses.postcode like '2134') LIMIT 2 OFFSET 0
+Rendered property_searches/_form.html.erb (1.6ms)
+Rendered searches/_form.html.erb (3.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered layouts/_navigator.html.erb (87.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Rendered welcome/index.html.erb within layouts/application (96.6ms)
+Completed 200 OK in 397ms (Views: 100.3ms | ActiveRecord: 10.6ms)
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:1)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:2)
+DEPRECATION WARNING: ActionController::Base.session= is deprecated. Please configure it on your application with config.session_store :cookie_store, :key => '....'. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/session_store.rb:7)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+Migrating to AddReferenceForAddress (20100216122556)
+Migrating to ChangeReferenceToImage (20100301065823)
+Migrating to AddReferenceToPropertySearch (20100306062514)
+Migrating to CreateSessions (20100306072215)
+Migrating to AddLatLngToAddress (20100404051547)
+Migrating to AddLatLngToSuburb (20100406134506)
+Migrating to AddUserReferenceToPost (20100410013248)
+Migrating to RemovePostableFromPost (20100410024706)
+Migrating to AddPostToProperty (20100410025005)
+Migrating to CreateContacts (20100411090251)
+Migrating to ChangeAddressTable (20100416183702)
+Migrating to Suburb (20100509051256)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("addresses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("carparks")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("contacts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("images")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("properties")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("property_searches")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("searches")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("sessions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_sessions_on_updated_at')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_sessions_on_session_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("suburbs")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_perishable_token')
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:1)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/load_app_config.rb:2)
+DEPRECATION WARNING: ActionController::Base.session= is deprecated. Please configure it on your application with config.session_store :cookie_store, :key => '....'. (called from <top (required)> at /Users/leoliang/Rails/found/config/initializers/session_store.rb:7)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+Migrating to AddReferenceForAddress (20100216122556)
+Migrating to ChangeReferenceToImage (20100301065823)
+Migrating to AddReferenceToPropertySearch (20100306062514)
+Migrating to CreateSessions (20100306072215)
+Migrating to AddLatLngToAddress (20100404051547)
+Migrating to AddLatLngToSuburb (20100406134506)
+Migrating to AddUserReferenceToPost (20100410013248)
+Migrating to RemovePostableFromPost (20100410024706)
+Migrating to AddPostToProperty (20100410025005)
+Migrating to CreateContacts (20100411090251)
+Migrating to ChangeAddressTable (20100416183702)
+Migrating to Suburb (20100509051256)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("addresses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("carparks")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("contacts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("images")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("properties")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("property_searches")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("searches")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("sessions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_sessions_on_updated_at')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_sessions_on_session_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("suburbs")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_perishable_token')

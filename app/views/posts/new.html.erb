@@ -1,0 +1,49 @@
+<div id="build_new_post">
+  <div class="page_title">
+    <h1 class="build">Build your Residential for Rent Ad</h1>
+  </div>
+  <h1>Property Address</h1>
+  <p>
+    TSed a neque magna. Maecenas risus lacus, molestie vitae interdum vel, sodales quis lacus. Suspendisse sed turpis ac diam molestie dignissim.
+    Nunc convallis tellus ac nulla adipiscing ut dictum nibh pretium. Etiam a mauris diam, eu sagittis tellus.
+  </p>
+  <ul class="steps">
+    <li class="current"><span class="num">1</span><span class="text">Build your ad</span></li>
+    <li><span class="num">2</span><span class="text">Preview & confrim</span></li>
+  </ul>
+  <%= render :partial => "/posts/form" %>
+</div>
+
+<% content_for :script do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("a.modified").bind('click', function(){
+        var $target= $(this).parents('div.form_section');
+        var $targetBody = $target.find('div.section_body');
+
+        $target.removeClass("section_finished");
+
+        var $targets = $('div.form_section');
+        $targets.each(function(){
+          if($targets.index(this) != $targets.index($target)){
+            $(this).removeClass("first_section");
+          }else{
+            $(this).addClass("first_section");
+          }
+        });
+        
+        var $bodies= $('div.form_section div.section_body');
+        $bodies.each(function(){
+          if($bodies.index(this) == $bodies.index($targetBody.get(0))){
+            if ($(this).is(':hidden')){
+              $(this).slideDown();
+            }
+          }else if (!$(this).is(':hidden')){
+            $(this).slideToggle();
+          }
+        });
+      });
+    });
+  </script>
+<% end %>
+

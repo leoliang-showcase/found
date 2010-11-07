@@ -1,0 +1,45 @@
+<div class="post container details">
+  <div class="line top">
+    <div class="address">
+      <%= post.address.to_s %>
+    </div>
+  </div>
+  <div class="left half">
+    <div id="googlemap">google map</div>
+  </div>
+  <div class="half">
+    <div class="postable">
+      <% property = post.property %>
+      <% unless property.nil? %>
+        <%= render :partial => "/properties/detail", :locals => { :property => property } %>
+      <% end %>
+    </div>
+    <div class="title">
+      105 ChurchStreet - Near New Apartment - Very Close To Station
+      <%=h post.title %>
+    </div>
+    <div class="description">
+      <%=h post.description %>
+      IntheHeart of Paramatta CBD.
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+<% content_for :script do %>
+  <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAYLuaqB7qMuVmZct0bNAhVRToMsSLBLYOIGCFpHF2BQfOB79_-BR2PDljF3gNcHkI6rzbMOOf_XFw1g" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".address").each(function(index, address){
+        $("#googlemap").show_address([$(address).text()]);
+      });
+
+      $('.slider').cycle({
+        speed:  'fast',
+        timeout: 0,
+        next:   '.next2',
+        prev:   '.prev2'
+      });
+    });
+  </script>
+<% end %>

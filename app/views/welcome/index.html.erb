@@ -1,0 +1,15 @@
+<% title "Welcomes" %>
+<div id="search">
+  <%= form_for search do |f| %>
+    <%= render :partial => "searches/form", :locals => { :f => f }%>
+  <% end %>
+  <div class="search_result">
+    <% if not @posts.nil? %>
+      <% if not @posts.empty? %>
+        <%= render :partial => "posts/list", :locals => { :posts => @posts } %>
+      <% else %>
+        Could Not Found Any Record
+      <% end %>
+    <% end %>
+  </div>
+</div>

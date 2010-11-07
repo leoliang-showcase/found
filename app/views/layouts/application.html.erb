@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Found Your Home</title>
+    <meta name="keywords" content="" />
+    <%= stylesheet_link_tag 'application','style','jquery-ui-1.8.custom'%>
+    <%= javascript_include_tag 'jquery-1.4.2.min',
+      'jquery-ui-1.8.custom.min',
+      'typewatch',
+      'jquery.cycle.all.min',
+      'iphone-style-checkboxes',
+      'datepicker',
+      'google-map',
+      'jquery.watermark-2.0.min',
+	  'rails',
+      'application'%>
+    <%= csrf_meta_tag %>
+  </head>  
+  <body id="body" onload="window.focus();">
+    <%= render :partial => "/layouts/navigator" %>
+    <div id="page_body">
+      <div id="header">
+        <div id="logo"></div>
+        <% unless current_user %>
+          <div class="text">
+            <h1>Welcome!<br />You're new, aren't you?</h1>
+            <h2 style="line-height: 1.5em;">FOUND YOUR HOME is a respectful community of young people who look for their next home. We provide the best tools and resource to help you to find your next stay.</h2>
+            <h3 style="line-height: 1.5em;">Go ahead, start looking...</h3>
+          </div>
+        <% end %>
+      </div>
+      <div id="content_body" class="container" style ="min-height: 228px;">
+        <%= yield %>
+      </div>
+      <%= render :partial => "/layouts/footer" %>
+    </div>
+    <%= yield :script %>
+  </body>
+</html>
+

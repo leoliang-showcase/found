@@ -1,0 +1,39 @@
+<div id="googlemap" class="right half">google map</div>
+<div id="content" class="half">
+  <div class="top">
+    <div class="entries_info"><%= page_entries_info posts %></div>
+    <%= will_paginate posts, :class => "paginate"%>
+  </div>
+  <ul class="list">
+    <% for post in posts %>
+      <li class="item">
+        <%= render :partial => "/posts/abstract", :locals => { :post => post } %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="bottom">
+    <%= will_paginate posts, :class => "paginate" %>
+  </div>
+</div>
+
+<% content_for :script do %>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAYLuaqB7qMuVmZct0bNAhVRToMsSLBLYOIGCFpHF2BQfOB79_-BR2PDljF3gNcHkI6rzbMOOf_XFw1g" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.address').each(function(index, address){
+        $('#googlemap').show_address([$(address).text()]);
+      });
+      $('.collapse').click(function(){
+        $(this).closest('.post').find('.middle').toggle();
+      });
+
+      $('.slider').cycle({
+        speed:  'fast',
+        timeout: 0,
+        next:   '.next2',
+        prev:   '.prev2'
+      });
+    });
+  </script>
+<% end %>

@@ -1,0 +1,9 @@
+<% title "Post" %>
+
+<div id="search">
+  <% form_for search do |f| %>
+    <%= render :partial => "searches/form", :locals => { :f => f }%>
+  <% end %>
+  <div class="padding5"></div>
+  <%= render :partial => "posts/detail", :locals => {:post => post } %>
+</div>

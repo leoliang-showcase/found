@@ -1,0 +1,26 @@
+<label class="slider_required" min="0" max="2000" step="50">
+  <%= f.hidden_field :min_price, :type=>"hidden", :class=>"min" %>
+  <%= f.hidden_field :max_price, :type=>"hidden", :class=>"max" %>
+  <span class="text">Price Range: </span>$<span class="value"></span><span class="bar"></span>
+</label>
+<label class="slider_required bedroom" min="0" max="10">
+  <%= f.hidden_field :min_of_bedrooms, :type=>"hidden", :class=>"min" %>
+  <%= f.hidden_field :max_of_bedrooms, :type=>"hidden", :class=>"max" %>
+  <span class="text">Bedroom: </span><span class="value"></span><span class="bar"></span>
+</label>
+<label class="slider_required bathroom" min="0" max="4">
+  <%= f.hidden_field :min_of_bathrooms, :type=>"hidden", :class=>"min" %>
+  <%= f.hidden_field :max_of_bathrooms, :type=>"hidden", :class=>"max" %>
+  <span class="text">Bathroom: </span><span class="value"></span><span class="bar"></span>
+</label>
+<label class="slider_required carpark" min="0" max="4">
+  <%= f.hidden_field :min_of_carparks, :type=>"hidden", :class=>"min" %>
+  <%= f.hidden_field :max_of_carparks, :type=>"hidden", :class=>"max" %>
+  <span class="text">Carspace: </span><span class="value"></span><span class="bar"></span>
+</label>
+<label class="property_type">
+  <span class="text" >Property type: </span>
+  <span class="bar">
+    <%= f.collection_select :property_type, Property::TYPES, :to_s, :upcase, {:prompt => true} %>
+  </span>
+</label>

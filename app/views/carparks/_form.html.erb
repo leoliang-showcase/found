@@ -1,0 +1,15 @@
+<%= form_for @carpark do |f| %>
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.label :bond %><br />
+    <%= f.text_field :bond %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

@@ -1,0 +1,24 @@
+<div class="post">
+  <div class="top">
+    <div class="address">
+      <%= link_to "#{h post.address.to_s(:short)}", post_path(post) %>
+    </div>
+    <div class="collapse"><a>Collapse</a></div>
+  </div>
+  <div class="middle container">
+    <div class="left">
+      <%= render :partial => "/images/list", :locals => { :images => post.images, :size => :thumb } %>
+    </div>
+    <div class="abstract">
+      <div class="postable">
+        <% property = post.property %>
+        <% unless property.nil? %>
+          <%= render :partial => "/properties/abstract", :locals => { :property => property } %>
+        <% end %>
+      </div>
+      <div class="description">
+        <%= h post.description %>
+      </div>
+    </div>
+  </div>
+</div>
